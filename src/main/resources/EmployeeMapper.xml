@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shankar.container.mapper.EmployeeMapper">
+    <select id="get" resultType="com.shankar.container.model.Employee">
+        SELECT EmployeeID, FirstName, DeptID FROM Employee WHERE EmployeeID = #{id}
+    </select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO Employee (EmployeeID, FirstName, DeptID) VALUES (#{employee.EmployeeID}, #{employee.FirstName}, #{employee.DeptID})
+    </insert>
+    <update id="update">
+        UPDATE Employee SET EmployeeID = #{employee.EmployeeID}, FirstName = #{employee.FirstName}, DeptID = #{employee.DeptID} WHERE EmployeeID = #{employee.EmployeeID}
+    </update>
+    <delete id="delete">
+        DELETE FROM Employee WHERE EmployeeID = #{id}
+    </delete>
+</mapper>
