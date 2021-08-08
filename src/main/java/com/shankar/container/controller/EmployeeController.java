@@ -30,6 +30,13 @@ public class EmployeeController {
 		System.out.println(employeeService.get(empId).toString()); 
 		return employeeService.get(empId);
 	}
+	
+	
+	@GetMapping(value = "/sayHello")
+	public String getEmployee() { 
+		
+		return "Hello(Not from Database)";
+	}
 
 	@DeleteMapping("/deleteEmployee")
 	public int deleteEmployee(@RequestParam(value="id") int empId) {
