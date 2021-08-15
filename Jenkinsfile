@@ -2,8 +2,8 @@ pipeline {
 
 environment { 
 	registry = "shankarcit/spring-boot-demoapp" 
-	registryCredential = 'dockerhub_id' 
-	dockerImage = 'shankarcit' 
+	registryCredential = 'shankarcit' 
+	dockerImage = '' 
 	}
     agent any
 
