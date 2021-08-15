@@ -3,7 +3,7 @@ pipeline {
 environment { 
 	registry = "shankarcit/spring-boot-demoapp" 
 	registryCredential = 'dockerhub_id' 
-	dockerImage = '' 
+	dockerImage = 'shankarcit' 
 	}
     agent any
 
@@ -32,7 +32,9 @@ environment {
 		stage("Push image to repository") {
 			steps {
 				script {
-					dockerImage.push()
+					docker.withRegistry( '', registryCredential ) {
+						dockerImage.push()
+						}
 				}
 			}
 		}
