@@ -1,4 +1,10 @@
 pipeline {
+
+environment { 
+	registry = "shankarcit/spring-boot-demoapp" 
+	registryCredential = 'dockerhub_id' 
+	dockerImage = '' 
+	}
     agent any
 
     triggers{
@@ -18,8 +24,19 @@ pipeline {
         }
         stage("Build Docker image") {
             steps {
-                docker.build(shankarcit/spring-boot-demoapp)
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                }
             }
         }
+		stage("Push image to repository") {
+			steps {
+				script {
+					dockerImage.push()
+				}
+			}
+		}
+		
+		
     }
 }
